@@ -1,3 +1,8 @@
+// Ejercicios del Modulo 5 de la Clase 1 repasando JS
+
+// Como detalle seguramente voy a volver a ver el codigo para crear funciones reutilizables
+// Porque tengo instancias donde tengo funciones que son practicamente iguales.
+
 function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
     this.nombreTit = nombreTit,
     this.apellidoTit = apellidoTit,
@@ -9,8 +14,8 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
     this.saldoCredito = 0,
     this.movimientosCredito = [],
     // Movimientos Totales
-    this.movimientosDebitoTotal = 0,
-    this.movimientosCreditoTotal = 0,
+    this.movimientosDebitadoTotal = 0,
+    this.movimientosAcreditadoTotal = 0,
 
     this.consultarTitular = () => this.nombreTit + ' ' + this.apellidoTit;
 
@@ -19,6 +24,7 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
         if (this.saldo > aDebitar) {
             this.movimientos.push('Se debito ' + aDebitar)
             this.saldo -= aDebitar;
+            this.movimientosDebitadoTotal -= aDebitar;
             return 'Se debito $' + aDebitar;
         } else {
             return 'Saldo insuficiente para hacer esta operacion';
@@ -28,6 +34,7 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
     this.ingresoDineroDebito = (agregar) => {
         this.movimientos.push('Se deposito $ ' + agregar)
         this.saldo += agregar;
+        this.movimientosAcreditadoTotal += agregar;
         return 'Se deposito $' + agregar;
     }
 
@@ -40,6 +47,7 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
         if (this.saldoCredito > aDebitar) {
             this.movimientos.push('Se debito ' + aDebitar)
             this.saldo -= aDebitar;
+            this.movimientosDebitadoTotal -= aDebitar;
             return 'Se debito $' + aDebitar;
         } else {
             return 'Saldo insuficiente para hacer esta operacion';
@@ -49,6 +57,7 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
     this.ingresoDineroCredito = (agregar) => {
         this.movimientos.push('Se deposito $ ' + agregar)
         this.saldoCredito += agregar;
+        this.movimientosAcreditadoTotal += agregar;
         return 'Se deposito $' + agregar;
     }
 
@@ -57,8 +66,9 @@ function CuentaBancaria(nombreTit, numeroCuenta, apellidoTit) {
     this.verSaldoCredito = () => this.saldoCredito;
 
     // Totales
-
-    //TODO Terminar Totales
+    this.movimientosTotales = () => {
+        return `Acreditado total: ${this.movimientosAcreditadoTotal}, Debitado total ${this.movimientosDebitadoTotal}`
+    }
 };
 
 // Cuentas

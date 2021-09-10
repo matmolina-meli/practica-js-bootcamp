@@ -15,13 +15,10 @@ compus.push(new Computadora('ram5', 'cpu5', 'disco5', 'monitor5', false));
 
 
 compus.forEach(item => {
-    //console.log(item)
+    return item
 });
 
 let compusTrue = compus.filter(item => item.gpu);
-
-//console.log(compusTrue);
-
 
 // Ejercicio 4
 let litros;
@@ -30,11 +27,36 @@ function gastoPorKm(distanciaKm) {
     return litros
 };
 
-console.log(gastoPorKm(1200));
+// console.log(gastoPorKm(1200));
 
 let precioNafta = 25;
 function precioViaje(precioNafta) {
     return litros * precioNafta;
 }
 
-console.log(precioViaje(precioNafta))
+// console.log(precioViaje(precioNafta))
+
+// Ejercicio 5
+
+const listaNumeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numerosMultiplicados = listaNumeros.map(x => x * 2);
+
+// Ejercicio 6
+
+const numeroMayorA = listaNumeros.filter(item => item > 5)
+
+// Ejercicio 7
+
+const primerNumero = numeroMayorA.find(numero => numero > 10)
+
+// Ejercicio 8
+
+let pokemones = [ 
+    { nombre: 'pikachu', poder: 12 },
+    { nombre: 'bulbasaur', poder: 6 },
+    { nombre: 'charizard', poder: 19 },
+    { nombre: 'squirtle', poder: 3 },
+    { nombre: 'metwo', poder: 6 }, 
+];
+
+const pokemonesFiltrados = pokemones.filter(pokemon => pokemon.poder > 10);
